@@ -12,10 +12,12 @@ public class MoodSad extends MoodAbstractClass {
 
     public MoodSad() {
         currentDate = new Date();
+        mood = "Sad";
     }
 
     public MoodSad(Date initialDate) {
         currentDate = initialDate;
+        mood = "Sad";
     }
 
     public void setDate(Date date) {
@@ -24,5 +26,9 @@ public class MoodSad extends MoodAbstractClass {
 
     public Date getDate() {
         return currentDate;
+    }
+
+    public String getMood() {
+        return mood;
     }
 }

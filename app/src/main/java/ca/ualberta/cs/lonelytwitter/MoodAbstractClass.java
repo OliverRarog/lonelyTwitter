@@ -13,4 +13,6 @@ public abstract class MoodAbstractClass {
     public abstract void setDate(Date date);
 
     public abstract Date getDate();
+
+    public abstract String getMood();
 }
