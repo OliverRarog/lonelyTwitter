@@ -12,11 +12,14 @@ import java.util.Date;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+
 
 public class LonelyTwitterActivity extends Activity {
 
@@ -35,9 +38,26 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
 		saveButton.setOnClickListener(new View.OnClickListener() {
-
 			public void onClick(View v) {
-				setResult(RESULT_OK);
+                Tweet importantTweet = new ImportantTweet("");
+                Tweet normalTweet = new NormalTweet("");
+
+
+                try {
+                    importantTweet.setMessage("Hello\n");
+                    normalTweet.setMessage("Hello\n");
+                } catch (TweetTooLongException e) {
+                    e.printStackTrace();
+                }
+                ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
+                tweetList.add(0, importantTweet);
+                tweetList.add(1, normalTweet);
+
+                for( Tweet t : tweetList) {
+                    Log.d("Tweet tag", "The tweet with message " + t.getMessage() + " is important? " + t.isImportant());
+                }
+
+                setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
 				saveInFile(text, new Date(System.currentTimeMillis()));
 				finish();

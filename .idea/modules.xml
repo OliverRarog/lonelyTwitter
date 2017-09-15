@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
+=======
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+>>>>>>> F17Thursday
       <module fileurl="file://$PROJECT_DIR$/lonelyTwitter.iml" filepath="$PROJECT_DIR$/lonelyTwitter.iml" />
     </modules>
   </component>
