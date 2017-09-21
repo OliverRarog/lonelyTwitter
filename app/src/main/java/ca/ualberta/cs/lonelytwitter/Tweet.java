@@ -55,5 +55,10 @@ public abstract class Tweet {
         return moodList;
     }
 
+    @Override
+    public String toString() {
+        return date.toString() + " | " + message;
+    }
+
 
 }
