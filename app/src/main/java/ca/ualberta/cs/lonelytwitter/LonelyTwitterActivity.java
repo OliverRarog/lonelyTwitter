@@ -68,6 +68,7 @@ public class LonelyTwitterActivity extends Activity {
             public void onClick(View v) {
                 tweetList.clear();
                 tweetListAdapter.notifyDataSetChanged();
+                clearFile();
             }
         });
 	}
@@ -122,5 +123,27 @@ public class LonelyTwitterActivity extends Activity {
             // TODO Auto-generated catch block
             throw new RuntimeException();
         }
+    }
+
+    private void clearFile() {
+        try {
+            FileOutputStream fos = openFileOutput(FILENAME,
+                    Context.MODE_PRIVATE);
+
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
+
+            Gson gson = new Gson();
+            gson.toJson(new ArrayList<Tweet>(), out);
+            out.flush();
+
+            fos.close();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            throw new RuntimeException();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            throw new RuntimeException();
+        }
+
     }
 }
