@@ -66,11 +66,37 @@ public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<
 
         solo.assertCurrentActivity("Wrong Activity", EditTweetActivity.class);
 
-        assertTrue(solo.waitForText("New Activity"));
+        assertTrue(solo.waitForText("Test Tweet!"));
 
         solo.goBack();
         solo.assertCurrentActivity("Wrong Activity", LonelyTwitterActivity.class);
 
+    }
+
+    public void testEditTweet() {
+        LonelyTwitterActivity activity = (LonelyTwitterActivity) solo.getCurrentActivity();
+
+        solo.assertCurrentActivity("Wrong Activity", LonelyTwitterActivity.class);
+
+        solo.clickOnButton("Clear");
+
+        solo.enterText((EditText) solo.getView(R.id.body), "Edit Tweet!");
+        solo.clickOnButton("Save");
+        solo.waitForText("Edit Tweet!");
+
+
+        final ListView oldTweetsList = activity.getOldTweetsList();
+        Tweet tweet =(Tweet) oldTweetsList.getItemAtPosition(0);
+        assertEquals("Edit Tweet!", tweet.getMessage());
+
+        solo.clickInList(0);
+
+        solo.assertCurrentActivity("Wrong Activity", EditTweetActivity.class);
+
+        assertTrue(solo.waitForText("Edit Tweet!"));
+
+        solo.goBack();
+        solo.assertCurrentActivity("Wrong Activity", LonelyTwitterActivity.class);
     }
 
 
