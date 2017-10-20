@@ -1,64 +1,46 @@
 package ca.ualberta.cs.lonelytwitter;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by rarog on 9/14/17.
- */
-
-public abstract class Tweet {
+public abstract class Tweet implements Tweetable {
     private String message;
     private Date date;
-    private ArrayList<MoodAbstractClass> moodList;
 
-    public Tweet(String message) {
+    public Tweet(String message){
         this.message = message;
-        date = new Date();
-        moodList = new ArrayList<MoodAbstractClass>();
+        this.date = new Date();
     }
 
     public Tweet(String message, Date date){
         this.message = message;
         this.date = date;
-        moodList = new ArrayList<MoodAbstractClass>();
     }
 
-    public String getMessage() {
+    @Override
+    public String toString(){
         return message;
     }
 
+    public abstract Boolean isImportant();
+
+
     public void setMessage(String message) throws TweetTooLongException {
-        if(message.length() > 140) {
+        if (message.length() > 140){
+            //Do Something!
             throw new TweetTooLongException();
         }
-        else {
-            this.message = message;
-        }
+        this.message = message;
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
     public Date getDate() {
         return date;
     }
-
-    public abstract boolean isImportant();
-
-    public void addMood(MoodAbstractClass mood) {
-        moodList.add(mood);
-    }
-
-    public ArrayList<MoodAbstractClass> getMoodList() {
-        return moodList;
-    }
-
-    @Override
-    public String toString() {
-        return date.toString() + " | " + message;
-    }
-
-
 }
