@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import com.robotium.solo.Solo;
 
-import junit.framework.TestCase;
+// Fix 2: Removed unused import statements
 
 /**
  * Created by wz on 14/09/15.

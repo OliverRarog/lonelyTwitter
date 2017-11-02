@@ -2,7 +2,8 @@ package ca.ualberta.cs.lonelytwitter;
 
 import java.util.Date;
 
-public abstract class Tweet implements Tweetable {
+// Fix 4: This class can be made package-private
+abstract class Tweet implements Tweetable {
     private String message;
     private Date date;
 
